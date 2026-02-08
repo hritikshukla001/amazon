@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sejal 🤍</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(160deg, #fbe7e9, #e8eaf6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* floating hearts */
+.heart {
+    position: absolute;
+    color: rgba(255, 105, 135, 0.4);
+    font-size: 20px;
+    animation: float 6s infinite ease-in;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(15px);
+    border-radius: 28px;
+    padding: 32px 24px;
+    width: 90%;
+    max-width: 360px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    animation: fadeUp 1.2s ease;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    margin-bottom: 6px;
+    color: #2f2f2f;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #6b6b6b;
+    margin-bottom: 22px;
+}
+
+.message {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 26px;
+}
+
+.question {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 18px;
+}
+
+button {
+    border: none;
+    border-radius: 25px;
+    padding: 12px 22px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 6px;
+    transition: all 0.3s ease;
+}
+
+.yes {
+    background: #ffb6c1;
+    color: #fff;
+}
+
+.yes:hover {
+    background: #ff9fb0;
+    transform: scale(1.05);
+}
+
+#finalMessage {
+    margin-top: 22px;
+    font-size: 16px;
+    color: #444;
+    display: none;
+    animation: fadeUp 1s ease;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts -->
+<span class="heart" style="left:10%; animation-delay:0s;">♡</span>
+<span class="heart" style="left:30%; animation-delay:2s;">♡</span>
+<span class="heart" style="left:50%; animation-delay:4s;">♡</span>
+<span class="heart" style="left:70%; animation-delay:1s;">♡</span>
+<span class="heart" style="left:90%; animation-delay:3s;">♡</span>
+
+<div class="card">
+    <h1>Sejal</h1>
+    <div class="subtitle">this is for you 🤍</div>
+
+    <div class="message">
+        Somewhere between conversations,<br>
+        shared smiles, and quiet moments,<br>
+        you became my favorite thought.<br><br>
+        I don’t know how you did it,<br>
+        but my heart feels calm when it’s you.
+    </div>
+
+    <div class="question">
+        Will you be mine?
+    </div>
+
+    <button class="yes" onclick="showLove()">Yes 🤍</button>
+    <button class="yes" onclick="showLove()">Always ✨</button>
+
+    <div id="finalMessage">
+        You just made my heart very, very happy.<br>
+        I choose you — today and always 🤍
+    </div>
+</div>
+
+<script>
+function showLove() {
+    document.getElementById("finalMessage").style.display = "block";
+}
+</script>
+
+</body>
+</html>
