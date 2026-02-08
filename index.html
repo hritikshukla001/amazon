@@ -5,67 +5,86 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sejal 🤍</title>
 
-<!-- Google Fonts -->
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
 <style>
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-/* ===== MIDNIGHT GLOW BACKGROUND ===== */
+/* ===== MIDNIGHT BACKGROUND ===== */
 body {
     margin: 0;
     min-height: 100vh;
     font-family: 'Poppins', sans-serif;
     background: radial-gradient(circle at top, #2c2f4a, #0f1021);
-    animation: glow 8s ease-in-out infinite alternate;
+    animation: nightGlow 10s ease-in-out infinite alternate;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
-@keyframes glow {
-    0% {
-        background: radial-gradient(circle at top, #2c2f4a, #0f1021);
-    }
-    100% {
-        background: radial-gradient(circle at top, #3a3f6b, #12132b);
-    }
+@keyframes nightGlow {
+    0% { background: radial-gradient(circle at top, #2c2f4a, #0f1021); }
+    100% { background: radial-gradient(circle at top, #3a3f6b, #12132b); }
+}
+
+/* ===== SUBTLE SPARKLES ===== */
+.sparkle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    animation: float 8s infinite ease-in;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); opacity: 0; }
+    20% { opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
 }
 
 /* ===== CARD ===== */
 .card {
     background: rgba(255,255,255,0.65);
     backdrop-filter: blur(18px);
-    border-radius: 30px;
-    padding: 26px 20px;
-    width: 90%;
+    border-radius: 32px;
+    padding: 26px 22px 30px;
+    width: 92%;
     max-width: 360px;
     text-align: center;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+    box-shadow: 0 35px 70px rgba(0,0,0,0.4);
 }
 
 /* ===== HANDWRITTEN NAME ===== */
 .name {
     font-family: 'Dancing Script', cursive;
-    font-size: 40px;
+    font-size: 42px;
     color: #ffb6c1;
-    margin-bottom: 6px;
-    overflow: hidden;
+    margin-bottom: 4px;
     white-space: nowrap;
-    border-right: 3px solid rgba(255,182,193,0.7);
+    overflow: hidden;
     width: 0;
-    animation: write 3s steps(12) forwards, blink 0.8s infinite;
+    border-right: 3px solid rgba(255,182,193,0.7);
+    animation: write 2.8s steps(12) forwards, blink 0.8s infinite;
 }
 
 @keyframes write {
     from { width: 0; }
-    to { width: 180px; }
+    to { width: 185px; }
 }
 
 @keyframes blink {
     50% { border-color: transparent; }
+}
+
+/* stop cursor blink after write */
+.name.finished {
+    border-right: none;
+    animation: none;
+    width: 185px;
+    text-shadow: 0 0 8px rgba(255,182,193,0.6);
 }
 
 .subtitle {
@@ -74,21 +93,20 @@ body {
     margin-bottom: 14px;
 }
 
-/* ===== IMAGE SLIDER ===== */
-.slider {
+/* ===== IMAGE FRAME ===== */
+.frame {
     width: 100%;
-    height: 240px;
+    height: 260px;
     border-radius: 22px;
-    overflow: hidden;
-    background: #f3f3f3;
-    margin-bottom: 16px;
+    background: #f4f4f4;
+    margin: 18px 0;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.08),
+                0 15px 30px rgba(0,0,0,0.2);
 }
 
-.slider img {
+.frame img {
     position: absolute;
     max-width: 100%;
     max-height: 100%;
@@ -102,11 +120,11 @@ body {
     animation: fade 20s infinite;
 }
 
-.slider img:nth-child(1) { animation-delay: 0s; }
-.slider img:nth-child(2) { animation-delay: 4s; }
-.slider img:nth-child(3) { animation-delay: 8s; }
-.slider img:nth-child(4) { animation-delay: 12s; }
-.slider img:nth-child(5) { animation-delay: 16s; }
+.frame img:nth-child(1){animation-delay:0s;}
+.frame img:nth-child(2){animation-delay:4s;}
+.frame img:nth-child(3){animation-delay:8s;}
+.frame img:nth-child(4){animation-delay:12s;}
+.frame img:nth-child(5){animation-delay:16s;}
 
 @keyframes fade {
     0% { opacity: 0; }
@@ -119,7 +137,7 @@ body {
 /* ===== TEXT ===== */
 .message {
     font-size: 15px;
-    line-height: 1.7;
+    line-height: 1.75;
     color: #444;
     margin-bottom: 18px;
 }
@@ -127,38 +145,46 @@ body {
 .question {
     font-family: 'Playfair Display', serif;
     font-size: 22px;
-    margin-bottom: 14px;
-    color: #333;
+    color: #2f2f2f;
+    margin-bottom: 16px;
+    letter-spacing: 0.4px;
 }
 
 /* ===== BUTTON ===== */
 button {
     border: none;
-    border-radius: 25px;
-    padding: 12px 24px;
+    border-radius: 28px;
+    padding: 13px 28px;
     font-size: 15px;
-    cursor: pointer;
     background: #ffb6c1;
     color: white;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(255,182,193,0.5);
+    animation: pulse 2.5s infinite;
     transition: 0.3s ease;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
 button:hover {
     background: #ff9fb0;
-    transform: scale(1.05);
 }
 
 /* ===== FINAL MESSAGE ===== */
 #final {
     display: none;
-    margin-top: 16px;
+    margin-top: 18px;
     font-size: 16px;
     color: #444;
-    animation: fadeUp 1.2s ease;
+    animation: rise 1.4s ease forwards;
 }
 
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(15px); }
+@keyframes rise {
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 </style>
@@ -166,14 +192,18 @@ button:hover {
 
 <body>
 
+<!-- sparkles -->
+<span class="sparkle" style="left:15%; animation-delay:0s;"></span>
+<span class="sparkle" style="left:35%; animation-delay:2s;"></span>
+<span class="sparkle" style="left:55%; animation-delay:4s;"></span>
+<span class="sparkle" style="left:75%; animation-delay:1s;"></span>
+
 <div class="card">
 
-    <!-- HANDWRITTEN NAME -->
-    <div class="name">Sejal</div>
+    <div id="name" class="name">Sejal</div>
     <div class="subtitle">this is for you 🤍</div>
 
-    <!-- IMAGES -->
-    <div class="slider">
+    <div class="frame">
         <img src="images/img1.jpg">
         <img src="images/img2.jpg">
         <img src="images/img3.jpg">
@@ -183,8 +213,8 @@ button:hover {
 
     <div class="message">
         Every memory here<br>
-        feels a little magical.<br>
-        And every moment with you<br>
+        feels a little magical,<br>
+        and every moment with you<br>
         feels like home.
     </div>
 
@@ -197,11 +227,15 @@ button:hover {
         And I promise —<br>
         I’ll choose you, always 🌙
     </div>
-
 </div>
 
 <script>
+setTimeout(() => {
+    document.getElementById("name").classList.add("finished");
+}, 3000);
+
 function showLove() {
+    document.querySelector("button").style.display = "none";
     document.getElementById("final").style.display = "block";
 }
 </script>
