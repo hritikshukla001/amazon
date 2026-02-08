@@ -5,7 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sejal 🤍</title>
 
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+/* ===== GLOBAL ===== */
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
@@ -17,6 +24,7 @@ body {
     justify-content: center;
 }
 
+/* ===== CARD ===== */
 .card {
     background: rgba(255,255,255,0.65);
     backdrop-filter: blur(16px);
@@ -28,18 +36,46 @@ body {
     box-shadow: 0 25px 45px rgba(0,0,0,0.12);
 }
 
-/* ===== FIXED SLIDER ===== */
+/* ===== TEXT ===== */
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin: 6px 0 2px;
+    color: #2f2f2f;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 14px;
+}
+
+.message {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 18px;
+}
+
+.question {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 14px;
+    color: #333;
+}
+
+/* ===== IMAGE SLIDER (FIXED) ===== */
 .slider {
     width: 100%;
     height: 240px;
     border-radius: 20px;
     overflow: hidden;
-    margin-bottom: 18px;
-    background: #f3f3f3; /* prevents ugly empty space */
+    background: #f3f3f3;
+    margin-bottom: 16px;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
 }
 
 .slider img {
@@ -48,14 +84,15 @@ body {
     max-height: 100%;
     width: auto;
     height: auto;
-    object-fit: contain; /* IMPORTANT: no face cutting */
-    opacity: 0;
+    object-fit: contain;   /* NO CROPPING */
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    opacity: 0;
     animation: fade 20s infinite;
 }
 
+/* Timing */
 .slider img:nth-child(1) { animation-delay: 0s; }
 .slider img:nth-child(2) { animation-delay: 4s; }
 .slider img:nth-child(3) { animation-delay: 8s; }
@@ -70,6 +107,37 @@ body {
     100% { opacity: 0; }
 }
 
+/* ===== BUTTON ===== */
+button {
+    border: none;
+    border-radius: 25px;
+    padding: 12px 22px;
+    font-size: 15px;
+    cursor: pointer;
+    background: #ffb6c1;
+    color: white;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #ff9fb0;
+    transform: scale(1.05);
+}
+
+/* ===== FINAL MESSAGE ===== */
+#final {
+    display: none;
+    margin-top: 16px;
+    font-size: 16px;
+    color: #444;
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 
 <body>
@@ -78,23 +146,25 @@ body {
     <h1>Sejal</h1>
     <div class="subtitle">my favorite memories 🤍</div>
 
+    <!-- IMAGES -->
     <div class="slider">
-        <img src="images/img1.jpg">
-        <img src="images/img2.jpg">
-        <img src="images/img3.jpg">
-        <img src="images/img4.jpg">
-        <img src="images/img5.jpg">
+        <img src="images/img1.jpg" alt="">
+        <img src="images/img2.jpg" alt="">
+        <img src="images/img3.jpg" alt="">
+        <img src="images/img4.jpg" alt="">
+        <img src="images/img5.jpg" alt="">
     </div>
 
     <div class="message">
         Every picture here<br>
-        reminds me why my heart<br>
-        always finds its way back to you.
+        holds a piece of my heart.<br>
+        And every memory reminds me<br>
+        how lucky I am — because of you.
     </div>
 
     <div class="question">Will you be mine?</div>
 
-    <button onclick="yes()">Yes 🤍</button>
+    <button onclick="showLove()">Yes 🤍</button>
 
     <div id="final">
         You chose me.<br>
@@ -104,7 +174,7 @@ body {
 </div>
 
 <script>
-function yes() {
+function showLove() {
     document.getElementById("final").style.display = "block";
 }
 </script>
