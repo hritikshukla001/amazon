@@ -6,69 +6,79 @@
 <title>Sejal 🤍</title>
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
 <style>
-/* ===== GLOBAL ===== */
 * {
     box-sizing: border-box;
 }
 
+/* ===== MIDNIGHT GLOW BACKGROUND ===== */
 body {
     margin: 0;
     min-height: 100vh;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(160deg, #fbe7e9, #e8eaf6);
+    background: radial-gradient(circle at top, #2c2f4a, #0f1021);
+    animation: glow 8s ease-in-out infinite alternate;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+@keyframes glow {
+    0% {
+        background: radial-gradient(circle at top, #2c2f4a, #0f1021);
+    }
+    100% {
+        background: radial-gradient(circle at top, #3a3f6b, #12132b);
+    }
+}
+
 /* ===== CARD ===== */
 .card {
     background: rgba(255,255,255,0.65);
-    backdrop-filter: blur(16px);
-    border-radius: 28px;
-    padding: 24px 20px;
+    backdrop-filter: blur(18px);
+    border-radius: 30px;
+    padding: 26px 20px;
     width: 90%;
     max-width: 360px;
     text-align: center;
-    box-shadow: 0 25px 45px rgba(0,0,0,0.12);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.35);
 }
 
-/* ===== TEXT ===== */
-h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    margin: 6px 0 2px;
-    color: #2f2f2f;
+/* ===== HANDWRITTEN NAME ===== */
+.name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+    color: #ffb6c1;
+    margin-bottom: 6px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid rgba(255,182,193,0.7);
+    width: 0;
+    animation: write 3s steps(12) forwards, blink 0.8s infinite;
+}
+
+@keyframes write {
+    from { width: 0; }
+    to { width: 180px; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
 }
 
 .subtitle {
     font-size: 14px;
-    color: #777;
+    color: #666;
     margin-bottom: 14px;
 }
 
-.message {
-    font-size: 15px;
-    line-height: 1.7;
-    color: #444;
-    margin-bottom: 18px;
-}
-
-.question {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    margin-bottom: 14px;
-    color: #333;
-}
-
-/* ===== IMAGE SLIDER (FIXED) ===== */
+/* ===== IMAGE SLIDER ===== */
 .slider {
     width: 100%;
     height: 240px;
-    border-radius: 20px;
+    border-radius: 22px;
     overflow: hidden;
     background: #f3f3f3;
     margin-bottom: 16px;
@@ -84,7 +94,7 @@ h1 {
     max-height: 100%;
     width: auto;
     height: auto;
-    object-fit: contain;   /* NO CROPPING */
+    object-fit: contain;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -92,7 +102,6 @@ h1 {
     animation: fade 20s infinite;
 }
 
-/* Timing */
 .slider img:nth-child(1) { animation-delay: 0s; }
 .slider img:nth-child(2) { animation-delay: 4s; }
 .slider img:nth-child(3) { animation-delay: 8s; }
@@ -107,11 +116,26 @@ h1 {
     100% { opacity: 0; }
 }
 
+/* ===== TEXT ===== */
+.message {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 18px;
+}
+
+.question {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 14px;
+    color: #333;
+}
+
 /* ===== BUTTON ===== */
 button {
     border: none;
     border-radius: 25px;
-    padding: 12px 22px;
+    padding: 12px 24px;
     font-size: 15px;
     cursor: pointer;
     background: #ffb6c1;
@@ -130,11 +154,11 @@ button:hover {
     margin-top: 16px;
     font-size: 16px;
     color: #444;
-    animation: fadeIn 1s ease;
+    animation: fadeUp 1.2s ease;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
 }
 </style>
@@ -143,23 +167,25 @@ button:hover {
 <body>
 
 <div class="card">
-    <h1>Sejal</h1>
-    <div class="subtitle">my favorite memories 🤍</div>
+
+    <!-- HANDWRITTEN NAME -->
+    <div class="name">Sejal</div>
+    <div class="subtitle">this is for you 🤍</div>
 
     <!-- IMAGES -->
     <div class="slider">
-        <img src="images/img1.jpg" alt="">
-        <img src="images/img2.jpg" alt="">
-        <img src="images/img3.jpg" alt="">
-        <img src="images/img4.jpg" alt="">
-        <img src="images/img5.jpg" alt="">
+        <img src="images/img1.jpg">
+        <img src="images/img2.jpg">
+        <img src="images/img3.jpg">
+        <img src="images/img4.jpg">
+        <img src="images/img5.jpg">
     </div>
 
     <div class="message">
-        Every picture here<br>
-        holds a piece of my heart.<br>
-        And every memory reminds me<br>
-        how lucky I am — because of you.
+        Every memory here<br>
+        feels a little magical.<br>
+        And every moment with you<br>
+        feels like home.
     </div>
 
     <div class="question">Will you be mine?</div>
@@ -168,9 +194,10 @@ button:hover {
 
     <div id="final">
         You chose me.<br>
-        And I promise — I’ll choose you<br>
-        every single day 🤍
+        And I promise —<br>
+        I’ll choose you, always 🌙
     </div>
+
 </div>
 
 <script>
